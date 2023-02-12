@@ -49,16 +49,26 @@ export default {
           configs: {
             landing: {
               N: '31R/35C/35R/36L',
-              S: '13R/17L/17C/18R'
+              S: '13R/17L/17C/18R',
+              SMid: '17C/18R',
+              NMid: '35C/36L',
 
             }, 
             departing: {
               N: '36R/35L',
-              S: '17R/18L'
+              S: '17R/18L',
+              SMid: '17R/18L',
+              NMid: '35L/36R',
             }
           },
           getLanding: function() {
-            if (this.parsedMetar.wind.speedKt <= 5) {
+            if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && this.parsedMetar.wind.speedKt <= 5) {
+                return this.configs.landing.SMid;
+            } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.landing.SMid;
+            } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && (this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.landing.NMid;
+            } else if (this.parsedMetar.wind.speedKt <= 5) {
                 return this.configs.landing.S;
             } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.landing.S;
@@ -69,7 +79,13 @@ export default {
             }
           },
           getDeparting: function() {
-            if (this.parsedMetar.wind.speedKt <= 5) {
+            if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && this.parsedMetar.wind.speedKt <= 5) {
+                return this.configs.departing.SMid;
+            } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.departing.SMid;
+            } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && (this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.departing.NMid;
+            } else if (this.parsedMetar.wind.speedKt <= 5) {
                 return this.configs.departing.S;
             } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.departing.S;
@@ -87,42 +103,34 @@ export default {
           parsedMetar: null,
           configs: {
             landing: {
-              NE: '4L/4R',
-              NW: '31L/31C/31R',
-              SE: '13L/13C/13R',
-              SW: '22L/22R',
+              NW: '31L/31R',
+              SE: '13L/13R',
             }, 
             departing: {
-              NE: '4L/4R',
-              NW: '31L/31C/31R',
-              SE: '13L/13C/13R',
-              SW: '22L/22R',
+              NW: '31L/31R',
+              SE: '13L/13R',
             }
           },
           getLanding: function() {
-            if ((this.parsedMetar.wind.speedKt <= 9) || (this.parsedMetar.wind.direction >= 280 && this.parsedMetar.wind.direction <= 360 && this.parsedMetar.wind.speedKt >= 10)) {
-                return this.configs.landing.NW;
-            } else if (this.parsedMetar.wind.direction >= 10 && this.parsedMetar.wind.direction <= 100 && this.parsedMetar.wind.speedKt >= 10) {
-                return this.configs.landing.NE;
-            } else if (this.parsedMetar.wind.direction >= 180 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 10) {
-                return this.configs.landing.SW;
-            } else if (this.parsedMetar.wind.direction >= 110 && this.parsedMetar.wind.direction <= 170 && this.parsedMetar.wind.speedKt >= 10) {
+            if (this.parsedMetar.wind.speedKt <= 5) {
                 return this.configs.landing.SE;
-            } else {
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.landing.SE;
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.landing.NW;
+            } else {
+                return this.configs.landing.SE;
             }
           },
           getDeparting: function() {
-            if ((this.parsedMetar.wind.speedKt <= 9) || (this.parsedMetar.wind.direction >= 280 && this.parsedMetar.wind.direction <= 360 && this.parsedMetar.wind.speedKt >= 10)) {
-                return this.configs.departing.NW;
-            } else if (this.parsedMetar.wind.direction >= 10 && this.parsedMetar.wind.direction <= 100 && this.parsedMetar.wind.speedKt >= 10) {
-                return this.configs.departing.NE;
-            } else if (this.parsedMetar.wind.direction >= 180 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 10) {
-                return this.configs.departing.SW;
-            } else if (this.parsedMetar.wind.direction >= 110 && this.parsedMetar.wind.direction <= 170 && this.parsedMetar.wind.speedKt >= 10) {
-                return this.configs.departing.SE;
+            if (this.parsedMetar.wind.speedKt <= 5) {
+                return this.configs.landing.SE;
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.landing.SE;
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
+                return this.configs.landing.NW;
             } else {
-                return this.configs.departing.NW;
+                return this.configs.landing.SE;
             }
           }
         },
@@ -133,56 +141,34 @@ export default {
           parsedMetar: null,
           configs: {
             landing: {
-              W: '25R/25L',
-              SW: '25/19',
-              S: '19R/19L',
-              E: '7R/7L',
-              SE: '7R/13',
-              NA: '1L',
-              N: '1L/1R'
+              S: '17L/17R',
+              N: '35L/35R'
             }, 
             departing: {
-              SW: '25L/25R',
-              S: '19R',
-              NE: '7R',
-              N: '1L/1R',
-              E: '7R/13',
-              S2: '19R/19L',
-              NE2: '7R/7L'
+              S: '17L/17R',
+              N: '35L/35R'
             }
           },
           getLanding: function() {
-            if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 12) {
-                return this.configs.landing.NA; // Night Noise Abatement
-            } else if (this.parsedMetar.wind.speedKt <= 5) {
-                return this.configs.landing.W;
-            } else if (this.parsedMetar.wind.direction >= 310 || this.parsedMetar.wind.direction < 40 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.landing.N;
-            } else if (this.parsedMetar.wind.direction >= 140 && this.parsedMetar.wind.direction <= 220 && this.parsedMetar.wind.speedKt >= 25) {
+            if (this.parsedMetar.wind.speedKt <= 10) {
                 return this.configs.landing.S;
-            } else if (this.parsedMetar.wind.direction >= 40 && this.parsedMetar.wind.direction <= 130 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.landing.E;
-            } else if (this.parsedMetar.wind.direction >= 220 && this.parsedMetar.wind.direction <= 300 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.landing.W;
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.landing.S;
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.landing.N;
             } else {
-                return this.configs.landing.W;
+                return this.configs.landing.S;
             }
           },
           getDeparting: function() {
-            if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 12) {
-                return this.configs.departing.S; // Night Noise Abatement
-            } else if (this.parsedMetar.wind.speedKt <= 5) {
-                return this.configs.departing.S;
-            } else if (this.parsedMetar.wind.direction >= 310 || this.parsedMetar.wind.direction < 40 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.departing.N;
-            } else if (this.parsedMetar.wind.direction >= 140 && this.parsedMetar.wind.direction <= 220 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.departing.S2;
-            } else if (this.parsedMetar.wind.direction >= 40 && this.parsedMetar.wind.direction <= 130 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.departing.NE2;
-            } else if (this.parsedMetar.wind.direction >= 220 && this.parsedMetar.wind.direction <= 300 && this.parsedMetar.wind.speedKt >= 25) {
-                return this.configs.departing.SW;
+            if (this.parsedMetar.wind.speedKt <= 10) {
+                return this.configs.landing.S;
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.landing.S;
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.landing.N;
             } else {
-                return this.configs.departing.S;
+                return this.configs.landing.S;
             }
           }
         }, 
