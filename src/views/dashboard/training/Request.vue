@@ -7,10 +7,10 @@
 			</div>
 			<div class="request_wrapper row row_no_margin" v-else>
 				<div class="col s12 l6 push-l6">
-					<p><b class="red-text">Important: </b> training requests are just that — requests. <br /><br />
-					There is no guarantee that your session will be picked up by a member of the training staff. If a request you've made gets picked up, you are expected to show up.
-					Treat the times as your availability, mentors and instructors have the ability to modify them when they pick up the session. <br /><br />
-					Please make sure that you've studied the relevant training material, as per the Training Syllabus, before requesting a session.</p>
+					<p>This request page is solely for indicating <b>your</b> availability for your assigned instructor. You can find your assinged instructor by navigating to our Discord server and in the document in the #training-requests channel<br/><br />
+					Once your assigned instructor has picked up your session, you will receive an email confirmation. Should another instructor pick up your session, you should assume they are a guest trainer and this has been coordinated internally. <br /><br />
+					Prior to your session, ensure you have completed your assigned lesson in the <a href="https://sites.google.com/view/zfwacademy/" style="color:blue;">Fort Worth Academy</a> and that you have reviewed your latest training note(s).<br /><br />
+					As always, please reach out to our training staff should you have any questions!</p>
 				</div>
 				<div class="col s12 l6 pull-l6">
 					<form class="row row_no_margin" @submit.prevent=submitRequest>
