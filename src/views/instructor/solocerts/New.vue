@@ -7,7 +7,7 @@
 			</div>
 			<div class="row row_no_margin" v-else>
 				<div class="col s12 l6 push-l6 card_desc">
-					<p>Solo certifications may be issued to students who have demonstrated sufficient competency on the position they are receiving a solo certification for. <br /><br />Solo certifications must be issued in accordance with the training syllabus and are automatically submitted to VATUSA. <br /><br />Solo certifications may not extend beyond 30 days in length.</p>
+					<p>Solo certifications may be issued to students who have demonstrated sufficient competency on the position they are receiving a solo certification for. <br /><br />Solo certifications are issued at the discretion of your instructor. In accordance with ZFW Training Policy and VATUSA policy, they are maintained on the ZFW website and VATUSA website. <br /><br />Solo certifications shall not extend beyond 30 days in length. You may only be issued up to three (3) solo certifications.</p>
 				</div>
 				<form class="col s12 l6 pull-l6" @submit.prevent=submitCert>
 					<div class="row row_no_margin">
@@ -19,7 +19,7 @@
 							<label>Controller</label>
 						</div>
 						<div class="col s12 input-field">
-							<input id="position" type="text" minlength=7 maxlength=7 class="validate" placeholder="CHI_APP" v-model="form.position" required>
+							<input id="position" type="text" minlength=7 maxlength=7 class="validate" placeholder="DFW_TWR" v-model="form.position" required>
 							<label for="position" class="active">Position</label>
 						</div>
 						<div class="col s12 input-field">
