@@ -233,11 +233,11 @@ td {
 		background: $secondary-color-light;
 	}
 	&.cert_solon {
-		background: #FFA500;
+		background: #5a02fc;
 	}
 	&.cert_solom {
-		background: #FFE83E;
-		color: #000000;
+		background: #ff4f01;
+		color: #fff;
 	}
 }
 
