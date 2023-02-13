@@ -253,12 +253,12 @@ export default {
 			color: #fff;
 		}
 		&.cert_solom {
-			background: #FFE83E;
-			color: #2F4F4F;
+			background: #ff4f01;
+			color: #fff;
 		}
 	
 		&.cert_solon {
-			background: #FFA500;
+			background: #5a02fc;
 			color: #fff;
 		}
 	}
