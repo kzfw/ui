@@ -39,7 +39,7 @@ import parse from 'metar-parser';
 export default {
   data() {
     return {
-      icao: ['KDFW', 'KDAL', 'KOKC'],
+      icao: ['KDFW', 'KDAL', 'KOKC', 'KACT'],
       stations: {
         KDFW: {
           icao: "KDFW",
@@ -124,13 +124,13 @@ export default {
           },
           getDeparting: function() {
             if (this.parsedMetar.wind.speedKt <= 5) {
-                return this.configs.landing.SE;
+                return this.configs.departing.SE;
             } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
-                return this.configs.landing.SE;
+                return this.configs.departing.SE;
             } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
-                return this.configs.landing.NW;
+                return this.configs.departing.NW;
             } else {
-                return this.configs.landing.SE;
+                return this.configs.departing.SE;
             }
           }
         },
@@ -162,6 +162,33 @@ export default {
           },
           getDeparting: function() {
             if (this.parsedMetar.wind.speedKt <= 10) {
+                return this.configs.departing.S;
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.departing.S;
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.departing.N;
+            } else {
+                return this.configs.departing.S;
+            }
+          }
+        }, 
+        KACT: {
+          icao: "KACT",
+          fullName: "Waco Regional Airport",
+          metar: null, 
+          parsedMetar: null,
+          configs: {
+            landing: {
+              N: '1/32',
+              S: '14/19'
+            }, 
+            departing: {
+              N: '1/32',
+              S: '14/19'
+            }
+          },
+          getLanding: function() {
+            if (this.parsedMetar.wind.speedKt <= 10) {
                 return this.configs.landing.S;
             } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
                 return this.configs.landing.S;
@@ -170,8 +197,19 @@ export default {
             } else {
                 return this.configs.landing.S;
             }
+          },
+          getDeparting: function() {
+            if (this.parsedMetar.wind.speedKt <= 10) {
+                return this.configs.departing.S;
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.departing.S;
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 11) {
+                return this.configs.departing.N;
+            } else {
+                return this.configs.departing.S;
+            }
           }
-        }, 
+        },
         /*KRFD: {
           icao: "KRFD",
           fullName: "Chicago Rockford International Airport",
