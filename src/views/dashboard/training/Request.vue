@@ -132,7 +132,7 @@ export default {
 			const rating = this.user.data.rating;
 			if(this.milestones) {
 				const minorPrerequisites = ["obs", "gnd", "twr", "app"];
-				const majorPrerequisites = ["obs", "gnd", "ordgnd", "ordtwr", "ordapp"];
+				const majorPrerequisites = ["obs", "gnd", "dfwgnd", "dfwtwr", "regapp"];
 				let milestonesShowed = this.milestones.filter((milestone) => {
 					if(this.user.data.vis) return (milestone.certCode.substring(0, 3) === "vis" && milestone.rating <= rating) || milestone.code === "GT1";
 					else {
@@ -140,9 +140,9 @@ export default {
 							!certs.includes(milestone.certCode) &&
 							(
 								milestone.code === "GT1" ||
-								(milestone.certCode.substring(0, 3) === "ord" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
-								(milestone.certCode.substring(0, 3) !== "ord" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zau") ||
-								(milestone.certCode === "zau" && certs.includes("ordapp"))
+								(milestone.certCode.substring(0, 3) === "dfw" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
+								(milestone.certCode.substring(0, 3) !== "dfw" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zfw") ||
+								(milestone.certCode === "zfw" && certs.includes("regapp"))
 							) && 
 							milestone.certCode.substring(0, 3) !== "vis"
 						);
