@@ -83,10 +83,11 @@
 					<div class="row">
 						<div class="col s12 l6">
                         <StaffCard :staffItem="staff.ins" />
-                        <div class="row">
+                       <!--
+						<div class="row">
                         <div class="col s1 push-s5 border_right hide-on-med-and-down"></div>
                         </div>
-                        <StaffCard :staffItem="staff.ia" />
+                        <StaffCard :staffItem="staff.ia" />-->
                         </div>
                     <div class="col s12 l6">
                     <StaffCard :staffItem="staff.mtr" />
