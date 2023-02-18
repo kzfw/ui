@@ -74,7 +74,7 @@
               </li>-->
               <li v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)" class="divider"></li>
               <li v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)">
-              <a href="https://mail.zoho.com/" target="_blank" rel="noopener noreferrer">Webmail</a>
+              <a href="https://webmail.zfwartcc.net/" target="_blank" rel="noopener noreferrer">Webmail</a>
               </li>
               <li v-if="user.isLoggedIn && user.data.isIns">
                 <router-link to='/ins'>Instructor Dashboard</router-link>

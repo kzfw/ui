@@ -64,7 +64,7 @@ export default {
           getLanding: function() {
             if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && this.parsedMetar.wind.speedKt <= 5) {
                 return this.configs.landing.SMid;
-            } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
+            } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270) && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.landing.SMid;
             } else if (this.parsedMetar.time.hour >= 4 && this.parsedMetar.time.hour <= 13 && (this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.landing.NMid;
