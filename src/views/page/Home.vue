@@ -4,7 +4,7 @@
       <div class="card-content">
         <span class="card-title">Welcome to Fort Worth ARTCC</span>
         <p>
-          The Fort Worth ARTCC covers parts of Texas, Oklahoma, New Mexico, Louisiana, and Arkansas, with a square mileage of over 147,000. Our goal and mission is to provide professional air traffic control services, foster a welcoming community, and enjoy this hobby to it's greatest extent possible. Students get a unique experience here with our student:instructor assignment program and get the advantage of consistent instruction and scheduling once assigned an instructor. We hope to see you on the scopes soon!
+          The Fort Worth ARTCC covers parts of Texas, Oklahoma, New Mexico, Louisiana, and Arkansas, with a square mileage of over 147,000. Our goal and mission are to provide professional air traffic control services, foster a welcoming community, and enjoy this hobby to its greatest extent possible. Students get a unique experience here with our student: instructor assignment program and get the advantage of consistent instruction and scheduling once assigned an instructor. We hope to see you on the scope soon!
         </p>
       <br>
         <p>
