@@ -19,7 +19,7 @@ export const vatusaApiAuth = axios.create({
 
 function isRunningOnDev() {
   const host = window.location.host;
-  if (host.includes("localhost") || host == "staging.zauartcc.org") {
+  if (host.includes("localhost") || host == "staging.zfwartcc.net") {
     return true;
   }
 
