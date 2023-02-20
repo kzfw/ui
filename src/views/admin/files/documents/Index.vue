@@ -22,7 +22,7 @@
 				</thead>
 				<tbody class="controller_list_row">
 					<tr v-for="(doc, i) in documents" :key="doc.id">
-						<td class="name"><router-link :to="`/files/documents/${doc.slug}`" target="_blank">{{doc.name}}</router-link></td>
+						<td class="name"><router-link :to="`/files/documents/${doc.slug}`" @click="openInNewTab($event)">{{doc.name}}</router-link></td>
 						<td>{{convertCategory(doc.category)}}</td>
 						<td>{{dtLong(doc.updatedAt)}}</td>
 						<td class="options">
