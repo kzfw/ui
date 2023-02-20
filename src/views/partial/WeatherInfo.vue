@@ -17,7 +17,8 @@
         </thead>
         <tbody>
           <tr v-for="station in stations" :key="station.icao">
-            <td><span class="hide-on-med-and-down">{{ station.fullName }} <strong>({{ station.icao }})</strong></span><span class="hide-on-large-only">{{ station.icao }}</span></td>
+            <td><div class='airport'><span class="hide-on-med-and-down">{{ station.fullName }} <strong>({{ station.icao }})</strong></span><span class="hide-on-large-only">{{ station.icao }}</span>
+            <!---<div class='metar'><span>{{ station.metar }}</span></div>--></div></td>
             <td>{{ formatWind(station) }}</td>
             <td><div class="airport_conditions" v-html="getConditions(station)"></div></td>
             <td>{{ station.getLanding() }}</td>
@@ -360,4 +361,66 @@ tbody tr {
     background-color: #eaeaea!important;
   }
 }
+
+/*.airport {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: background-color .3s ease;
+  &:hover {
+    background: #eaeaea;
+
+    .metar {
+      opacity: 1;
+    }
+  }
+}
+.metar {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+	top: calc(100% + 10px);
+	opacity: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+	pointer-events: none;
+	transition: opacity 0.3s;
+	width: calc(100% - 10px);
+	z-index: 500;
+	background: #fff;
+	box-shadow: 0px 0px 10px 0px rgba(#000, 0.5);
+
+	&::before {
+		left: 50%;
+		transform: translateX(-50%);
+		content: "";
+		pointer-events: none;
+		display: inline-block;
+		position: absolute;
+		bottom: 100%;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 10px 10px 10px;
+		border-color: transparent transparent #122049 transparent;
+	}
+
+	h6 {
+		background: $primary-color;
+		padding: 10px;
+		color: #fff;
+		font-weight: 300;
+		margin: 0;
+	}
+
+	p {
+		padding: 10px;
+		margin: 0;
+
+		&.route {
+			font-weight: 700;
+		}
+	}
+}*/
 </style>
