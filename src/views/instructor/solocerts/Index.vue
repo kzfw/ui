@@ -14,7 +14,7 @@
             <Spinner />
         </div>
        
-        <div class="certs_wrapper" v-else>
+        <div class="certs_wrapper" v-if="loading===false && certs.length !== 0">
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
                     <tr>
