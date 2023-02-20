@@ -50,7 +50,7 @@
 							<div :id="`modal_delete_${controller.cid}`" class="modal modal_delete">
 								<div class="modal-content">
 									<h4>Remove Controller?</h4>
-									<p>This will remove <b>{{controller.fname}} {{controller.lname}}</b> from the Chicago ARTCC. You must state a reason for removal below. Please note that this will delete the controller from both the website and the VATUSA facility roster.</p>
+									<p>This will remove <b>{{controller.fname}} {{controller.lname}}</b> from the Fort Worth ARTCC. You must state a reason for removal below. Please note that this will delete the controller from both the website and the VATUSA facility roster.</p>
 									<textarea class="materialize-textarea" placeholder="Reason for removal" v-model="reason" required></textarea>
 								</div>
 								<div class="modal-footer">

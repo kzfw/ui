@@ -2,7 +2,7 @@
 	<div class="card">
 		<div class="card-content">
 			<span class="card-title">Become a Visitor</span>
-			<p v-if="!user.isLoggedIn">Thank you for your interest in visiting the Chicago ARTCC. To apply for visiting status, click the button below to login and continue.<br /></p>
+			<p v-if="!user.isLoggedIn">Thank you for your interest in visiting the Fort Worth ARTCC. To apply for visiting status, click the button below to login and continue.<br /></p>
 			<p><b class="red-text">Important: </b>please ensure that you meet all requirements to become a visitor, as outlined in our <router-link to="/files/documents/visiting-controller-policy-26476"><b>Visiting Controller Policy</b></router-link>. Any application that doesn't meet the requirements will be rejected.</p>
 			<div v-if="!user.isLoggedIn">
 				<button class="btn btn-waves login_button" @click="login">Login with VATSIM</button>
