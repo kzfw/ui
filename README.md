@@ -1,10 +1,10 @@
-# Chicago ARTCC 2022 - UI 
+# Fort Worth ARTCC 2022 - UI 
 
-A Vue SPA for the Chicago ARTCC Website, forked from the Albuquerque ARTCC project. This communicates with the ZAU API in order to deliver content to users.
+A Vue SPA for the Fort Worth ARTCC Website, forked from the Albuquerque ARTCC project. This communicates with the ZFW API in order to deliver content to users.
 
 # License
 
-The Chicago ARTCC website is hereby released under the Creative Commons CC BY-NC-SA 4.0 license. Please ensure you are familiar with the license before contributing to this project. A couple of key takeaways:
+The Fort Worth ARTCC website is hereby released under the Creative Commons CC BY-NC-SA 4.0 license. Please ensure you are familiar with the license before contributing to this project. A couple of key takeaways:
 
 1. If you choose to share or alter this project, you **MUST** give credit to the contributors of this project.
 2. You may **NOT** use any of this project for commercial purposes.
@@ -34,7 +34,7 @@ Thank you to all contributors, past and present.
 Prerequisites:
 
 - Most recent LTS of Node.js (v16), with the corresponding version of npm.
-- Have the ZAU API running locally at `http://localhost:3000`.
+- Have the ZFW API running locally at `http://localhost:3000`.
 - A basic understanding of Git (branches, merge requests).
 
 If you wish to contribute, please do the following:
