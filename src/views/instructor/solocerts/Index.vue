@@ -14,7 +14,7 @@
             <Spinner />
         </div>
        
-        <div class="certs_wrapper">
+        <div class="certs_wrapper" v-else>
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
                     <tr>
