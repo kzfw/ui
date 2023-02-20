@@ -6,7 +6,7 @@
                 <div class="col s4"><router-link to="/ins/solo/new"><span class="btn waves-effect waves-light right">New</span></router-link></div>
             </div>
             <div>
-                <p class="no_certs" v-if="loading===false && certs.length === 0">There are no solo certificates on record for ZAU</p>
+                <p class="no_certs" v-if="loading===false && certs.length === 0">There are no solo certificates on record for ZFW</p>
             </div>
         </div>
  
