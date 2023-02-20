@@ -41,7 +41,7 @@
 							<label for="home">Home ARTCC/FIR</label>
 						</div>
 						<div class="input-field col s12">
-							<label for="reason">Why would you like to visit ZAU?</label>
+							<label for="reason">Why would you like to visit ZFW?</label>
 							<textarea id="reason" class="materialize-textarea validate" v-model="form.reason" required></textarea>
 						</div>
 						<div class="input-field col s12">
@@ -50,7 +50,7 @@
 					</div>
 				</div>
 				<div v-else>
-					<p>You cannot apply to become a visitor since you're already a member of ZAU.</p>
+					<p>You cannot apply to become a visitor since you're already a member of ZFW.</p>
 				</div>
 			</div>
 		</div>

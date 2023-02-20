@@ -60,7 +60,7 @@
                   <div class="input-field col s12">
                     <p id="join_reason">{{ app.reason }}</p>
                     <label for="join_reason" class="active"
-                      >Why would you like to visit ZAU?</label
+                      >Why would you like to visit ZFW?</label
                     >
                   </div>
                 </div>
