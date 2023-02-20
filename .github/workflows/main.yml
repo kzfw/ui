@@ -34,6 +34,6 @@ jobs:
       - name: Log into K8s cluster
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 zfw-k8s
       - name: Deploy image to cluster
-        run: kubectl set image deployment/api-dev api-dev=ghcr.io/${{ github.repository }}:${{ github.sha }} --record -n zfw-staging-web-stack
+        run: kubectl set image deployment/ui-dev ui-dev=ghcr.io/${{ github.repository }}:${{ github.sha }} --record -n zfw-staging-web-stack
       - name: Verify deployment
-        run: kubectl rollout status deployment/api-dev -n zfw-staging-web-stack
+        run: kubectl rollout status deployment/ui-dev -n zfw-staging-web-stack
