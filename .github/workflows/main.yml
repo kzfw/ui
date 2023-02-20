@@ -31,7 +31,7 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Log into K8s cluster
-        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 tcs
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 zfw-k8s
       - name: Deploy image to cluster
         run: kubectl set image deployment/api-dev api-dev=ghcr.io/${{ github.repository }}:${{ github.sha }} --record -n zfw-staging-web-stack
       - name: Verify deployment
