@@ -141,7 +141,7 @@ export default {
           certsToShow.push(cert);
         else {
           const certPos = cert.code.slice(-3);
-          if (!hasCerts.includes(`ord${certPos}`)) {
+          if ((!hasCerts.includes(`dfw${certPos}`)) && (!hasCerts.includes(`reg${certPos}`))) {
             certsToShow.push(cert);
           }
         }
