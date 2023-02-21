@@ -29,8 +29,8 @@
 }
 .btn {
   background-color: #002868;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 15px;
+  margin: 10px;
   text-align: center;
   color:#f2f2f2
 }
