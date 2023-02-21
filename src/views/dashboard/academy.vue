@@ -1,5 +1,5 @@
 <template>
-	<div class="card home_intro">
+	<!-- <div class="card home_intro">
 		<div class="card-content">
 			<span class="card-title">Controller Dashboard</span>
 			<div class="loading_container" v-if="!controllingSessions">
@@ -13,7 +13,7 @@
 					<span v-if="user.data.rating !== 1">
 						You will need to control one hour by <b>{{calcControlDate}}</b> to prevent removal from the roster.
 					</span>
-				</div>
+				</div> -->
 <!--			<span class="section_title">
 					External Integrations
 				</span>
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<!-- <div class="card">
 		<div class="card-content">
 			<span class="card-title">Recent Connections</span>
 		</div>
@@ -73,7 +73,7 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div> -->
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
