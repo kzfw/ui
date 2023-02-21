@@ -272,7 +272,7 @@ const routes = [
 		path: '/acd', component: Dashboard, meta: { loggedIn: true }, children: [
 			{
 				path: '',
-				component: () => import('../views/dashboard/Index.vue')
+				component: () => import('../views/dashboard/academy.vue')
 			},
 			{
 				path: 'profile',
