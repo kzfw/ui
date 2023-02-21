@@ -30,7 +30,7 @@
 .btn {
   background-color: #002868;
   padding: 30px;
-  margin-top: 5px;
+  margin-top: 50px;
   text-align: center;
   color:#f2f2f2
 }
