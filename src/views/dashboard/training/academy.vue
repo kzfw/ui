@@ -5,11 +5,11 @@
       </div>
       <div class="button-list">
         <ul>
-          <li><a href="s1.vue"><button class="btn">S1: Delivery and Ground Control</button></a></li>
-          <li><a href="page2.html"><button class="btn">S2: Local Control</button></a></li>
-          <li><a href="page3.html"><button class="btn">S3: Terminal Radar Control</button></a></li>
-          <li><a href="page4.html"><button class="btn">C1: Enroute Control</button></a></li>
-          <li><a href="videos.html"><button class="btn">Lecture Videos</button></a></li>
+          <li><a href="https://sites.google.com/view/zfwacademy/s1-delivery-and-ground-control?authuser=0"><button class="btn">S1: Delivery and Ground Control</button></a></li>
+          <li><a href="https://sites.google.com/view/zfwacademy/s2-local-control?authuser=0"><button class="btn">S2: Local Control</button></a></li>
+          <li><a href="https://sites.google.com/view/zfwacademy/s3-terminal-radar-control?authuser=0"><button class="btn">S3: Terminal Radar Control</button></a></li>
+          <li><a href="https://sites.google.com/view/zfwacademy/c1-en-route-control?authuser=0"><button class="btn">C1: Enroute Control</button></a></li>
+          <li><a href="https://sites.google.com/view/zfwacademy/lecture-videos?authuser=0"><button class="btn">Lecture Videos</button></a></li>
         </ul>
       </div>
       <!-- Other content goes here -->
