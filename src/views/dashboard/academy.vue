@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
       <div class="title-banner">
         <h1>Welcome to the ZFW Training Academy</h1>
       </div>
@@ -17,6 +17,12 @@
   </template>
   
   <style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
   .title-banner {
     background-color: #002868;
     padding: 20px;
@@ -30,22 +36,26 @@
   }
   .button-list {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .button-list ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .button-list li {
-    margin-right: 10px;
+    margin-bottom: 10px;
   }
   .btn {
     background-color: #002868;
-    padding: 8px 16px;
-    font-size: 10px;
-    text-align: top;
+    padding: 16px 32px;
+    font-size: 16px;
+    text-align: center;
     color: #f2f2f2;
   }
   </style>
