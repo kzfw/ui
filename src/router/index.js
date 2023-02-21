@@ -268,6 +268,34 @@ const routes = [
 			}
 		]
 	},
+	{
+		path: '/acd', component: Dashboard, meta: { loggedIn: true }, children: [
+			{
+				path: '',
+				component: () => import('../views/controllers/academy.vue')
+			},
+			{
+				path: 'profile',
+				component: () => import('../views/dashboard/Edit.vue')
+			},
+			{
+				path: 'feedback',
+				component: () => import('../views/dashboard/Feedback.vue')
+			},
+			{
+				path: 'training',
+				component: () => import('../views/dashboard/training/Index.vue')
+			},
+			{
+				path: 'training/new',
+				component: () => import('../views/dashboard/training/Request.vue')
+			},
+			{
+				path: 'training/session/:id',
+				component: () => import('../views/dashboard/training/ViewSession.vue')
+			}
+		]
+	},
 //	{
 //		path: '/ids',
 //		component: () => import('../views/page/Ids.vue')
