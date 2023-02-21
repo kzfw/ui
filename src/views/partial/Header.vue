@@ -77,6 +77,9 @@
               <a href="https://webmail.zfwartcc.net/" target="_blank" rel="noopener noreferrer">Webmail</a>
               </li>
               <li v-if="user.isLoggedIn && user.data.isIns">
+                <router-link to='/acd'>ZFW Academy</router-link>
+              </li>
+              <li v-if="user.isLoggedIn && user.data.isIns">
                 <router-link to='/ins'>Instructor Dashboard</router-link>
               </li>
               <li v-if="user.isLoggedIn && user.data.isStaff">
