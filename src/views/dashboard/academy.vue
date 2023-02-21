@@ -43,7 +43,7 @@
   }
   .btn {
     background-color: #002868;
-    padding: 10px;
+    padding: 50px;
     text-align: center;
     color: #f2f2f2;
   }
