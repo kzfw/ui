@@ -44,8 +44,8 @@
   .btn {
     background-color: #002868;
     padding: 8px 16px;
-    font-size: 14px;
-    text-align: center;
+    font-size: 10px;
+    text-align: top;
     color: #f2f2f2;
   }
   </style>
