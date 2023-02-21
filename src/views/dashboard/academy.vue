@@ -5,11 +5,11 @@
       </div>
       <div class="button-list">
         <ul>
-          <li><a href="page1.html"><button class="btn">S1: Delivery and Ground Control</button></a></li>
-          <li><a href="page2.html"><button class="btn">S2: Local Control</button></a></li>
-          <li><a href="page3.html"><button class="btn">S3: Terminal Radar Control</button></a></li>
-          <li><a href="page4.html"><button class="btn">C1: Enroute Control</button></a></li>
-          <li><a href="videos.html"><button class="btn">Lecture Videos</button></a></li>
+          <li><a href="page1.html" class="btn">S1: Delivery and Ground Control</a></li>
+          <li><a href="page2.html" class="btn">S2: Local Control</a></li>
+          <li><a href="page3.html" class="btn">S3: Terminal Radar Control</a></li>
+          <li><a href="page4.html" class="btn">C1: Enroute Control</a></li>
+          <li><a href="videos.html" class="btn">Lecture Videos</a></li>
         </ul>
       </div>
       <!-- Other content goes here -->
@@ -57,6 +57,8 @@
     font-size: 16px;
     text-align: center;
     color: #f2f2f2;
+    text-decoration: none;
+    display: block;
   }
   </style>
   
