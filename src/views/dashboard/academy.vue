@@ -29,7 +29,7 @@
 }
 .btn {
   background-color: #002868;
-  padding: 15px;
+  padding: 30px;
   margin: 5px;
   text-align: center;
   color:#f2f2f2
