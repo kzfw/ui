@@ -4,7 +4,7 @@
       <div id="footer_text">
         <p>This site is not affiliated with the FAA, or any governing aviation body. All content contained herein is approved only for use on the VATSIM network and for simulation purposes only. All data contained within is owned by the VATSIM Fort Worth ARTCC and is not permitted for further distribution or use without the express written consent of facility management.</p>
       </div>
-      <img src="https://i.imgur.com/Ed7kIT1.png" alt="" draggable="false" height="115">
+      <img src="https://zfwartcc.nyc3.cdn.digitaloceanspaces.com/New%20Logo.png" alt="" draggable="false" height="115">
     </div>
     <div class="footer-copyright">
       <div class="wrapper">
