@@ -5,7 +5,7 @@
         <div>
 <router-link to="/"
           ><img class="mainLogo"
-          src="https://i.imgur.com/eau6zIH.png"
+          src="https://zfwartcc.nyc3.cdn.digitaloceanspaces.com/New%20Logo.png"
             draggable="false"
             height="165"
         /></router-link>
