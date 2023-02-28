@@ -5,11 +5,29 @@
       </div>
       <div class="button-list">
         <ul>
-          <li><a href=""><button class="btn">S1: Delivery and Ground Control</button></a></li>
-          <li><a href="https://sites.google.com/view/zfwacademy/s2-local-control?authuser=0"><button class="btn">S2: Local Control</button></a></li>
-          <li><a href="https://sites.google.com/view/zfwacademy/s3-terminal-radar-control?authuser=0"><button class="btn">S3: Terminal Radar Control</button></a></li>
-          <li><a href="https://sites.google.com/view/zfwacademy/c1-en-route-control?authuser=0"><button class="btn">C1: Enroute Control</button></a></li>
-          <li><a href="https://sites.google.com/view/zfwacademy/lecture-videos?authuser=0"><button class="btn">Lecture Videos</button></a></li>
+          <li>
+          <router-link to="/acd/s1" class="collection-item">
+            <button class="btn">S1: Delivery and Ground Control</button>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/acd/s2" class="collection-item">
+            <button class="btn">S2: Local Control</button>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/acd/s3" class="collection-item">
+            <button class="btn">S3: Terminal Radar Control</button>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/acd/c1" class="collection-item">
+            <button class="btn">C1: Enroute Control</button>
+          </router-link>
+        </li>
+         <li>
+          <a href="https://sites.google.com/view/zfwacademy/lecture-videos?authuser=0" target="none"><button class="btn">Lecture Videos</button></a>
+        </li>
         </ul>
       </div>
       <!-- Other content goes here -->

@@ -275,6 +275,22 @@ const routes = [
 				component: () => import('../views/dashboard/training/academy.vue')
 			},
 			{
+				path: 's1',
+				component: () => import('../views/dashboard/training/S1-Material.vue')
+			},
+			{
+				path: 's2',
+				component: () => import('../views/dashboard/training/S2-Material.vue')
+			},
+			{
+				path: 's3',
+				component: () => import('../views/dashboard/training/S3-Material.vue')
+			},
+			{
+				path: 'c1',
+				component: () => import('../views/dashboard/training/C1-Material.vue')
+			},
+			{
 				path: 'profile',
 				component: () => import('../views/dashboard/Edit.vue')
 			},
