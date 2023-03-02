@@ -70,7 +70,7 @@ export default {
 			preventScrolling: false
 		});
 		this.chips = M.Chips.init(document.querySelector('.chips'), {
-			placeholder: 'Enter a callsign',
+			placeholder: 'DFW_E_TWR',
 			secondaryPlaceholder: ' ',
 			limit: 3
 		});
