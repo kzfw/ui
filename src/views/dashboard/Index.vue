@@ -8,7 +8,7 @@
 			<div v-else>
 				<div class="hours_info">
 					<span>
-						You have controlled for <b>{{hoursCalc}}</b> in the past 30 days.
+						You have controlled for <b>{{hoursCalc}}</b> in the last calendar month.
 					</span>
 					<span v-if="user.data.rating !== 1">
 						You will need to control one hour by <b>{{calcControlDate}}</b> to prevent removal from the roster.
@@ -163,27 +163,30 @@ export default {
 		},
 		calcControlDate() {
 			let date = new Date(this.user.data.joinDate ?? Date.now());
+			let seconds = 0;
 
-			if(this.controllingSessions.length > 0 ) {
-				let seconds = 0;
+			if (this.controllingSessions.length > 0) {
 				for (const session of this.controllingSessions) {
-					if(seconds < 3600 && this.approvedAirports.includes(session.position.slice(0, 3))) {
-						const newSeconds = (new Date(session.timeEnd) - new Date(session.timeStart)) / 1000;
-						seconds += newSeconds;
-						date = new Date(session.timeEnd);
-					}
-
-					if(seconds >= 3600) {
-						break;
-					}
+				if (seconds < 3600 && this.approvedAirports.includes(session.position.slice(0, 3))) {
+					const newSeconds = (new Date(session.timeEnd) - new Date(session.timeStart)) / 1000;
+					seconds += newSeconds;
+					date = new Date(session.timeEnd);
+				}
+				if (seconds >= 3600) {
+					break;
+				}
 				}
 			}
 
-			date.setUTCMonth(date.getUTCMonth() + 1, 1); // set to the 1st day of the next month
-    		date.setUTCHours(0, 0, 0, 0); // set to midnight UTC
-    		date.setUTCDate(date.getUTCDate() - 1); // subtract one day to get the last day of the month
-			return this.formatDate(date);
-		}
+			const endOfThisMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0, 23, 59, 59, 999);
+			const endOfNextMonth = new Date(date.getFullYear(), date.getMonth() + 2, 0, 23, 59, 59, 999);
+
+			if (seconds >= 3600) {
+				return this.formatDate(endOfNextMonth);
+			} else {
+				return this.formatDate(endOfThisMonth);
+			}
+		} 
 	}
 };
 </script>
