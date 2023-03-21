@@ -167,19 +167,21 @@ export default {
 			if(this.controllingSessions.length > 0 ) {
 				let seconds = 0;
 				for (const session of this.controllingSessions) {
-					if(seconds < 10800 && this.approvedAirports.includes(session.position.slice(0, 3))) {
+					if(seconds < 3600 && this.approvedAirports.includes(session.position.slice(0, 3))) {
 						const newSeconds = (new Date(session.timeEnd) - new Date(session.timeStart)) / 1000;
 						seconds += newSeconds;
 						date = new Date(session.timeEnd);
 					}
 
-					if(seconds >= 10800) {
+					if(seconds >= 3600) {
 						break;
 					}
 				}
 			}
 
-			date.setUTCDate(date.getUTCDate() + 31);
+			date.setUTCMonth(date.getUTCMonth() + 1, 1); // set to the 1st day of the next month
+    		date.setUTCHours(0, 0, 0, 0); // set to midnight UTC
+    		date.setUTCDate(date.getUTCDate() - 1); // subtract one day to get the last day of the month
 			return this.formatDate(date);
 		}
 	}
