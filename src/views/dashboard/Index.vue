@@ -8,7 +8,7 @@
 			<div v-else>
 				<div class="hours_info">
 					<span>
-						You have controlled for <b>{{hoursCalc}}</b> in the last calendar month.
+						You have controlled for <b>{{hoursCalc}}</b> in the last 31 days.
 					</span>
 					<span v-if="user.data.rating !== 1">
 						You will need to control one hour by <b>{{calcControlDate}}</b> to prevent removal from the roster.
