@@ -31,23 +31,17 @@
 						</div>
 						<div class="input-field col s12 m6">
 							<div id="start_time">
-								<div class="date">{{formatHtmlDate(session.startTime)}}</div>
-								<div class="controls">
-									<div><i class="material-icons" @click="increaseTime('start')">arrow_drop_up</i></div>
-									<div><i class="material-icons" @click="decreaseTime('start')">arrow_drop_down</i></div>
-								</div>
+								<input id="start_time" type="datetime-local" required v-model="session.startTime">
+  								<label for="start_time" class="active">Start Time</label>
 							</div>
-							<label for="start_time" class="active">Start Time (Zulu)</label>
+							<label for="start_time" class="active">Start Time (CST)</label>
 						</div>
 						<div class="input-field col s12 m6">
 							<div id="end_time">
-								<div class="date">{{formatHtmlDate(session.endTime)}}</div>
-								<div class="controls">
-									<div><i class="material-icons" @click="increaseTime('end')">arrow_drop_up</i></div>
-									<div><i class="material-icons" @click="decreaseTime('end')">arrow_drop_down</i></div>
-								</div>
+								<input id="end_time" type="datetime-local" required v-model="session.endTime">
+  								<label for="end_time" class="active">End Time</label>
 							</div>
-							<label for="end_time" class="active">End Time (Zulu) </label>
+							<label for="end_time" class="active">End Time (CST)</label>
 						</div>
 						<div class="input-field col s12 m6 milestone">
 							<select required disabled class="materialize-select">
@@ -71,6 +65,7 @@
 								<option value=0>Classroom</option>
 								<option value=1>Live Network</option>
 								<option value=2>Sweatbox</option>
+								<option value=3>NO SHOW</option>
 							</select>
 							<label>Location</label>
 						</div>
@@ -82,6 +77,7 @@
 								<option value=3>Average Progress</option>
 								<option value=4>Great Progress</option>
 								<option value=5>Exceptional Progress</option>
+								<option value=6>NO SHOW</option>
 							</select>
 							<label>Progress</label>
 						</div>
