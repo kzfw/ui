@@ -1,50 +1,83 @@
 <template>
 	<div class="card">
-		<div class="card-content">
-			<div class="card-title">Training Requests</div>
-			<div class="loading_container" v-if="loading === true">
-				<Spinner />
+	  <div class="card-content">
+		<div class="card-title">Training Requests</div>
+		<div class="loading_container" v-if="loading === true">
+		  <Spinner />
+		</div>
+		<div class="calendar_wrapper" v-else>
+		  <div class="calendar z-depth-2">
+			<div class="calendar_top">
+			  <div class="days z-depth-1">
+				<div>Sunday</div>
+				<div>Monday</div>
+				<div>Tuesday</div>
+				<div>Wednesday</div>
+				<div>Thursday</div>
+				<div>Friday</div>
+				<div>Saturday</div>
+			  </div>
 			</div>
-			<div class="calendar_wrapper" v-else>
-				<div class="calendar z-depth-2">
-					<div class="calendar_top">
-						<div class="days z-depth-1">
-							<div>Sunday</div>
-							<div>Monday</div>
-							<div>Tuesday</div>
-							<div>Wednesday</div>
-							<div>Thursday</div>
-							<div>Friday</div>
-							<div>Saturday</div>
-						</div>
-					</div>
-					<div class="calendar-body">
-						<div class="week">
-							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(0,7)" :key="date.date">
-								<div class="week_date">
-									<span :class="[((new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past_date' : ''), (new Date(new Date().getTime()).getUTCDate() === new Date(date.date).getUTCDate() ? 'current_date' : '')]">
-										{{new Date(date.date).toUTCString().slice(5, 11)}}
-									</span>
-								</div>
-								<div :class="`date_requests ${(new Date(Date.UTC(date.date)).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`" v-if="date.requests.length > 0">
-									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
-								</div>
-							</router-link>
-						</div>
-						<div class="week">
-							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(7,14)" :key="date.date">
-								<div class="week_date">
-									{{new Date(date.date).toUTCString().slice(5, 11)}}
-								</div>
-								<div class="date_requests" v-if="date.requests.length > 0">
-									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
-								</div>
-							</router-link>
-						</div>
-						<div class="week">
-							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(14)" :key="date.date">
-								<div class="week_date">
-									{{new Date(date.date).toUTCString().slice(5, 11)}}
+			<div class="calendar-body">
+			  <div class="week">
+				<router-link
+				  :to="`/ins/training/requests/${urlSafeDate(date.date)}`"
+				  :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`"
+				  v-for="date in dates.slice(0, 7)"
+				  :key="date.date"
+				>
+				  <div class="week_date">
+					<span
+					  :class="[
+						(new Date(date.date).getTime()) - (new Date().getTime()) <
+						0
+						  ? 'past_date'
+						  : '',
+						(new Date(new Date().getTime()).getUTCDate() ===
+						new Date(date.date).getUTCDate()
+						  ? 'current_date'
+						  : ''),
+					  ]"
+					>
+					  {{ new Date(date.date).toUTCString().slice(5, 11) }}
+					</span>
+				  </div>
+				  <div
+					:class="`date_requests ${(new Date(
+					  Date.UTC(date.date)
+					).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`"
+					v-if="date.requests.length > 0"
+				  >
+					{{ date.requests.length }} request
+					<span v-if="date.requests.length > 1">s</span>
+				  </div>
+				</router-link>
+			  </div>
+			  <div class="week">
+				<router-link
+				  :to="`/ins/training/requests/${urlSafeDate(date.date)}`"
+				  :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`"
+				  v-for="date in dates.slice(7, 14)"
+				  :key="date.date"
+				>
+				  <div class="week_date">
+					{{ new Date(date.date).toUTCString().slice(5, 11) }}
+				  </div>
+				  <div class="date_requests" v-if="date.requests.length > 0">
+					{{ date.requests.length }} request
+					<span v-if="date.requests.length > 1">s</span>
+				  </div>
+				</router-link>
+			  </div>
+			  <div class="week">
+				<router-link
+				  :to="`/ins/training/requests/${urlSafeDate(date.date)}`"
+				  :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`"
+				  v-for="date in dates.slice(14)"
+				  :key="date.date"
+				>
+				  <div class="week_date">
+					{{ new Date(date.date).toUTCString().slice(5, 11)}}
 								</div>
 								<div class="date_requests" v-if="date.requests.length > 0">
 									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
