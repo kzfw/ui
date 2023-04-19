@@ -65,7 +65,8 @@
 								<option value=0>Classroom</option>
 								<option value=1>Live Network</option>
 								<option value=2>Sweatbox</option>
-								<option value=3>NO SHOW</option>
+								<option value=3>Canceled</option>
+								<option value=4>NO SHOW</option>
 							</select>
 							<label>Location</label>
 						</div>
