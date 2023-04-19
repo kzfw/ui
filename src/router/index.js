@@ -272,7 +272,7 @@ const routes = [
 		path: '/acd', component: Dashboard, meta: { loggedIn: true }, children: [
 			{
 				path: '',
-				component: () => import('../views/dashboard/training/academy.vue')
+				component: () => import('../views/dashboard/training/academy/academy.vue')
 			},
 			{
 				path: 'profile',
@@ -293,6 +293,18 @@ const routes = [
 			{
 				path: 'training/session/:id',
 				component: () => import('../views/dashboard/training/ViewSession.vue')
+			},
+			{
+				path: 'training/academy',
+				component: () => import('../views/dashboard/training/academy/academy.vue')
+			},
+			{
+				path: 'training/academy/S1',
+				component: () => import('../views/dashboard/training/academy/S1.vue')
+			},
+			{
+				path: 'training/academy/S1L1',
+				component: () => import('../views/dashboard/training/academy/S1L1.vue')
 			}
 		]
 	},

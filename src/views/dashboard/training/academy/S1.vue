@@ -3,14 +3,24 @@
       <div class="title-banner">
         <h1>Welcome to the ZFW Training Academy</h1>
       </div>
-      <div class="button-list">
-        <ul>
-          <li><a href="page1.html"><button class="btn">S1: Delivery and Ground Control</button></a></li>
-          <li><a href="page2.html"><button class="btn">S2: Local Control</button></a></li>
-          <li><a href="page3.html"><button class="btn">S3: Terminal Radar Control</button></a></li>
-          <li><a href="page4.html"><button class="btn">C1: Enroute Control</button></a></li>
-          <li><a href="videos.html"><button class="btn">Lecture Videos</button></a></li>
-        </ul>
+      <div class="academy-content-wrapper">
+        <router-link to="/acd/training/academy">Back to Academy Home</router-link>
+        <div class="card">
+          <div class="card-content">
+            <h3>Welcome to the S1 Training Material!</h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <p>Body</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <p>Closing</p>
+          </div>
+        </div>
+        <router-link to="/acd/training/academy/S1L1"><button class="btn">Next Lesson</button></router-link>
       </div>
       <!-- Other content goes here -->
     </div>
