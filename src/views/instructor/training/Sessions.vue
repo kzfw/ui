@@ -27,12 +27,18 @@
 						<td>{{dtLong(session.startTime)}}</td>
 						<td>{{dtLong(session.endTime)}}</td>
 						<td class="options">
+							<!-- View Details button -->
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
+							<!-- Edit Notes button -->
 							<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 								<i class="material-icons">edit</i>
 							</router-link>
+							<!-- Remove button -->
+							<button class="btn-flat btn-small" @click="removeSession(session._id)">
+								<i class="material-icons">delete</i>
+							</button>
 						</td>
 						<div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
@@ -108,6 +114,16 @@ export default {
 			const d = new Date(value);
 			return d.toLocaleString('en-US', {month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'UTC', hour12: false});
 		},
+
+		async removeSession(sessionId) {
+			try {
+					await zabApi.delete(`/training/session/${sessionId}`);
+					// Remove the deleted session from the sessions array
+					this.sessions = this.sessions.filter(session => session._id !== sessionId);
+			} catch(e) {
+				console.log(e);
+		}
+}
 	}
 };
 </script>

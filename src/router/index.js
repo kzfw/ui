@@ -259,6 +259,10 @@ const routes = [
 				component: () => import('../views/dashboard/training/Index.vue')
 			},
 			{
+				path: 'training/initial',
+				component: () => import('../views/dashboard/training/TrainingRequest.vue')
+			},
+			{
 				path: 'training/new',
 				component: () => import('../views/dashboard/training/Request.vue')
 			},
