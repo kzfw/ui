@@ -2,7 +2,15 @@
 	<div class="card">
 		<div class="card-content">
 			<span class="card-title">Controller Activity Report</span>
-			<p>Showing controller activity since {{dLong(chkDate)}}</p>
+			<div class="card-title2" style="display: flex; align-items: center; justify-content: space-between;">
+  				<div>
+    				<p>Showing controller activity in <strong>{{chkDate2.toLocaleString('en-US', { month: 'long' })}}, {{chkDate2.getFullYear()}}</strong></p>
+  				</div>
+  				<div>
+    				<a class="waves-effect waves-light btn" v-on:click="previousMonth()">Previous</a>
+    				<a class="waves-effect waves-light btn" v-on:click="nextMonth()">Next</a>
+  				</div>
+			</div>
 		</div>
 		<div class="table_wrapper">
 			<table class="medium striped" v-if="report">
@@ -67,7 +75,8 @@
 										</span>
 									</div>
 									<div class="certifications training_request" v-else>
-										Observer has made <b>{{controller.totalRequests}}</b> training request(s) in the last 60 days
+    									<div>{{controller.ratingLong}} has made <b>{{controller.totalRequests}}</b> training request(s) in the last 31 days</div>
+    									<div>{{controller.ratingLong}} has had <b>{{controller.totalSessions}}</b> training session(s) in the last 31 days</div>
 									</div>
 								</div>
 							</router-link>
@@ -102,20 +111,19 @@
 
 <script>
 import { zabApi } from '@/helpers/axios.js';
-
 export default {
 	data() {
 		return {
 			report: null,
-			chkDate: null,
+			chkDate2: new Date(),
 			reason: '',
 			sortBy: null,
 			descending: true
 		};
 	},
 	async mounted() {
+		console.log(this.chkDate2);
 		await this.getActivity();
-
 		M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
 		});
@@ -124,11 +132,39 @@ export default {
 		});
 	},
 	methods: {
-		async getActivity() {
-			const d = new Date();
-			this.chkDate = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - 31));
-			const {data: reportData} = await zabApi.get('/stats/activity');
-			this.report = reportData.data;
+		async getActivity(month = null) {
+  			const d = new Date();
+  			const monthDate = month ? new Date(`${month}-01`) : new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+			const monthString = `${monthDate.getUTCFullYear()}-${(monthDate.getUTCMonth() + 1).toString().padStart(2, '0')}`;
+  			this.chkDate = monthString;
+  			const {data: reportData} = await zabApi.get('/stats/activity', {
+    			params: {
+      				month: monthString
+    			}
+  			});
+  			this.report = reportData.data;
+  			//console.log(this.report);
+		},
+		async setDateAndFetchActivity(date) {
+  			this.chkDate2 = date;
+  			const {data: reportData} = await zabApi.get('/stats/activity', {
+    			params: {
+      				month: `${date.getUTCFullYear()}-${(date.getUTCMonth() + 1).toString().padStart(2, '0')}`
+    			}
+  			});
+  			this.report = reportData.data;
+		},
+		async previousMonth() {
+  			const prevMonth = new Date(this.chkDate2.getUTCFullYear(), this.chkDate2.getUTCMonth() - 1, 1);
+  			await this.setDateAndFetchActivity(prevMonth);
+			this.$forceUpdate(); // force a re-render of the component
+		},
+		async nextMonth() {
+  			const nextMonth = new Date(this.chkDate2.getUTCFullYear(), this.chkDate2.getUTCMonth() + 1, 1);
+  			if (nextMonth <= new Date()) {
+    			await this.setDateAndFetchActivity(nextMonth);
+				this.$forceUpdate(); // force a re-render of the component
+  			}
 		},
 		async removeController(cid) {
 			try {
@@ -138,12 +174,9 @@ export default {
 						reason: this.reason
 					}
 				});
-
 				this.reason = '';
-
 				if(data.ret_det.code === 200) {
 					this.toastSuccess('Controller removed from roster');
-
 					this.$nextTick(() => {
 						M.Modal.getInstance(document.querySelector('.modal_delete')).close();
 					});
@@ -179,7 +212,7 @@ export default {
 					certsToShow.push(cert);
 				} else {
 					const certPos = cert.code.slice(-3);
-					if ((!hasCerts.includes(`dfw${certPos}`)) && (!hasCerts.includes(`reg${certPos}`))) {
+					if(!hasCerts.includes(`dfw${certPos}`)) {
 						certsToShow.push(cert);
 					}
 				}
@@ -198,13 +231,11 @@ export default {
 	computed: {
 		sortedArray() {
 			let array = this.report;
-
 			if(this.sortBy && this.descending) {
 				array.sort((a, b) => (b[this.sortBy] > a[this.sortBy]) - (b[this.sortBy] < a[this.sortBy]));
 			} else if(this.sortBy && !this.descending) {
 				array.sort((a, b) => (a[this.sortBy] > b[this.sortBy]) - (a[this.sortBy] < b[this.sortBy]));
 			}
-
 			return array;
 		}
 	}
@@ -215,32 +246,25 @@ export default {
 .protected {
 	background: rgba($accent-color, 0.25) !important;
 }
-
 .bold {
 	font-weight: 600;
 }
-
 .table_wrapper {
 	overflow: auto;
-
 	table {
 		min-width: 700px;
-
 		.type_controller {
 			color: rgba(0, 0, 0, 0.87);
 			margin-right: -14px;
 		}
-
 		th {
 			user-select: none;
 			cursor: pointer;
-
 			i {
 				font-size: 17px;
 				color: #a8a8a8;
 				position: absolute;
 				margin-top: 4px;
-
 				&.active {
 					color: #a8a8a8;
 					font-size: 24px;
@@ -251,7 +275,6 @@ export default {
 		}
 	}
 }
-
 .controller_name {
 	&:hover {
 		.controller_info {
@@ -259,7 +282,6 @@ export default {
 		}
 	}
 }
-
 .controller_info {
 	position: absolute;
 	margin-top: 15px;
@@ -270,7 +292,6 @@ export default {
 	z-index: 500;
 	background: #fff;
 	box-shadow: 0px 0px 10px 0px rgba(#000, 0.5);
-
 	&::before {
 		left: 10%;
 		transform: translateX(-10%);
@@ -285,7 +306,6 @@ export default {
 		border-width: 0 10px 10px 10px;
 		border-color: transparent transparent #122049 transparent;
 	}
-
 	h6 {
 		background: $primary-color;
 		padding: 10px;
@@ -293,31 +313,25 @@ export default {
 		font-weight: 300;
 		margin: 0;
 	}
-
 	p {
 		padding: 0 .75em;
 		margin: 0;
-
 		&.bold {
 			padding-top: .5em;
 		}
-
 		&.light {
 			font-weight: 300;
 			margin-top: -5px;
 			color: #000;
 		}
 	}
-
 	.certifications {
 		padding: .5em .75em .75em .75em;
 	}
-
 	.training_request {
 		color: #000;
 		font-size: .875rem;
 	}
-
 	.cert {
 		display: inline-block;
 		padding: 0.125rem 0.25rem;
@@ -325,19 +339,15 @@ export default {
 		font-size: 0.80rem;
 		margin: 2px;
 		user-select: none;
-
 		&+.title {
 			margin-top: 1em;
 		}
-
 		&.cert_senior {
 			background: $cert_senior;
 		}
-
 		&.cert_junior {
 			background: $cert_junior;
 		}
-
 		&.cert_training {
 			background: $cert_training;
 		}
@@ -345,16 +355,13 @@ export default {
 		&.cert_center {
 			background-color: $secondary-color-dark;
 		}
-
 		&.cert_major {
 			background: $secondary-color;
 		}
-
 		&.cert_minor {
 			background: $secondary-color-light;
 		}
 	}
-
 	.title {
 		color: #9e9e9e;
 		font-size: .8rem;
