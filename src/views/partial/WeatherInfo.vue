@@ -150,22 +150,22 @@ export default {
             }
           },
           getLanding: function() {
-            if (this.parsedMetar.wind.speedKt <= 10) {
+            if (this.parsedMetar.wind.speedKt <= 5) {
                 return this.configs.landing.S;
-            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.landing.S;
-            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 11) {
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.landing.N;
             } else {
                 return this.configs.landing.S;
             }
           },
           getDeparting: function() {
-            if (this.parsedMetar.wind.speedKt <= 10) {
+            if (this.parsedMetar.wind.speedKt <= 5) {
                 return this.configs.departing.S;
-            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 11) {
+            } else if (this.parsedMetar.wind.direction >= 90 && this.parsedMetar.wind.direction <= 270 && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.departing.S;
-            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 11) {
+            } else if ((this.parsedMetar.wind.direction < 90 || this.parsedMetar.wind.direction > 270) && this.parsedMetar.wind.speedKt >= 6) {
                 return this.configs.departing.N;
             } else {
                 return this.configs.departing.S;
