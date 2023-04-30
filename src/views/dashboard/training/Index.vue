@@ -56,6 +56,7 @@
 <script>
 import {zabApi} from '@/helpers/axios.js';
 import PastSessions from './Past.vue';
+
 export default {
 	name: 'TrainingDash',
 	title: 'Training',
@@ -69,6 +70,7 @@ export default {
 	},
 	async mounted() {
 		await this.getUpcomingSessions();
+
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
    			margin: 0
 			}) ;
@@ -76,23 +78,29 @@ export default {
 		preventScrolling: false
 			}) ;
 		},
+
 	methods: {
 		async getUpcomingSessions() {
 			const {data} = await zabApi.get(`/training/request/upcoming`);
 			this.upcomingSessions = data.data;
 		},
+
 		async deleteSession(id)
 		{
 			console.log(id);
 			const {data} = await zabApi.delete(`/training/request/${id}`);
+
 			this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+
 			this.upcomingSessions = [];
 			this.getUpcomingSessions();
+
 			document.location.reload();
 			});
 		}
 	}
+
 };
 </script>
 
@@ -102,15 +110,19 @@ export default {
 	margin-top: -1em;
 	font-style: italic;
 }
+
 table {
 	min-width: 500px;
 }
+
 .session_wrapper {
 	overflow: auto;
 }
+
 .session_list {
 	min-width: 500px;
 }
+
 .session_list_row {
 	tr {
 		transition: background-color .3s ease;
