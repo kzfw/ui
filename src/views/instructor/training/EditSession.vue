@@ -44,8 +44,9 @@
 							<label for="end_time" class="active">End Time (CST)</label>
 						</div>
 						<div class="input-field col s12 m6 milestone">
-							<select required disabled class="materialize-select">
-								<option disabled selected>{{session.milestone.name}}</option>
+							<select required class="materialize-select" v-model="selectedMilestoneId" :disabled="disabled">
+							<option selected>{{session.milestone.code + ' - ' + session.milestone.name}}</option>
+							<option v-for="milestone in milestones" :key="milestone._id" :value="milestone.code">{{milestone.code + ' - ' + milestone.name}}</option>
 							</select>
 							<label>Milestone</label>
 						</div>
@@ -128,12 +129,13 @@ export default {
 		return {
 			session: null,
 			step: 1,
+			milestones: null,
         duration: 0
 		};
 	},
 	async mounted() {
 		await this.getSessionDetails();
-
+		await this.getTrainingMilestones();
 		this.setTimes();
 
 		M.FormSelect.init(document.querySelectorAll('select'), {});
@@ -150,6 +152,10 @@ export default {
 			} catch(e) {
 				console.log(e);
 			}
+		},
+		async getTrainingMilestones() {
+			const {data} = await zabApi.get(`/training/milestones`);
+			this.milestones = data.data.milestones;
 		},
 		async saveForm() {
 			try {
@@ -246,7 +252,23 @@ export default {
 				this.session.endTime = d.toISOString();
 			}
 		}
-	}
+	},
+	computed: {
+    selectedMilestoneId: {
+      get() {
+        return this.session.milestone.code
+      },
+      set(value) {
+        this.$emit('update:session', {
+          ...this.session,
+          milestone: {
+            ...this.session.milestone,
+            id: value
+          }
+        })
+      }
+    }
+  }
 };
 </script>
 

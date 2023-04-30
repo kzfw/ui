@@ -180,3 +180,8 @@ select:not(.materialize-select):not(.browser-default) {
 .table_wrapper {
 	overflow: auto;
 }
+
+.dropdown-content {
+	max-height: 350px !important;
+	overflow-y: auto;
+}
