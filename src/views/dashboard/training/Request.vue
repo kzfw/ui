@@ -7,10 +7,10 @@
 			</div>
 			<div class="request_wrapper row row_no_margin">
 				<div class="col s12 l6 push-l6">
-					<p>This request page is for signing up for training. <br /><br />
-					Once an instructor has been assigned, you will receive an email with your instructor's name.<br /><br />
-                    After you have been assigned an instructor, you may schedule a session using the training request form.<br /><br />
-					As always, please reach out to our training staff should you have any questions!</p>
+					<p><b class="red-text">Important: </b> training requests are just that — requests. <br /><br />
+					There is no guarantee that your session will be picked up by a member of the training staff. If a request you've made gets picked up, you are expected to show up.
+					Treat the times as your availability, mentors and instructors have the ability to modify them when they pick up the session. <br /><br />
+					Please make sure that you've studied the relevant training material, as per the Training Syllabus, before requesting a session.</p>
 				</div>
 				<div class="col s12 l6 pull-l6">
 					<form class="row row_no_margin">
@@ -48,6 +48,33 @@ export default {
 	methods: {
 	},
 	computed: {
+		filteredMilestones() {
+			const certs = this.user.data.certCodes;
+			const rating = this.user.data.rating;
+			if(this.milestones) {
+				const minorPrerequisites = ["obs", "gnd", "twr", "app"];
+				const majorPrerequisites = ["obs", "gnd", "dfwgnd", "dfwtwr", "dfwapp"];
+				let milestonesShowed = this.milestones.filter((milestone) => {
+					if(this.user.data.vis) return (milestone.certCode.substring(0, 3) === "vis" && milestone.rating <= rating) || milestone.code === "GT1";
+					else {
+						return (  // This is still slightly hard to understand.  It returns the milestones that haven't been completed yet for the rating, or the C90 equivalent (if no major cert has been attained yet) and next rating's milestones, or center milestones if all other certs have been attained.
+							!certs.includes(milestone.certCode) &&
+							(
+								milestone.code === "GT1" ||
+								(milestone.certCode.substring(0, 3) === "dfw" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
+								(milestone.certCode.substring(0, 3) !== "dfw" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zfw") ||
+								(milestone.certCode === "zfw" && certs.includes("dfwapp"))
+							) && 
+							milestone.certCode.substring(0, 3) !== "vis"
+						);
+					}
+				});
+				return milestonesShowed;
+			}
+		},
+		...mapState('user', [
+			'user'
+		])
 	}
 };
 </script>
