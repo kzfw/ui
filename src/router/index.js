@@ -265,7 +265,7 @@ const routes = [
 			{
 				path: 'training/session/:id',
 				component: () => import('../views/dashboard/training/ViewSession.vue')
-			}
+			},
 		]
 	},
 	{
