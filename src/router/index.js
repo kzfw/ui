@@ -259,7 +259,7 @@ const routes = [
 				component: () => import('../views/dashboard/training/Index.vue')
 			},
 			{
-				path: 'training/initial',
+				path: 'training/instructorreq',
 				component: () => import('../views/dashboard/training/TrainingRequest.vue')
 			},
 			{
