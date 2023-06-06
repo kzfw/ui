@@ -100,7 +100,7 @@ export default {
             },
             async getControllers() {
                 try {
-                    const {data} = await zabApi.get('/feedback/controllers');
+                    const {data} = await zabApi.get("/controller");
                     this.controllers = data.data;
                 } catch(e) {
                     console.log(e);
