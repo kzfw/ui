@@ -10,6 +10,9 @@
 			You have no open training sessions
 		</div>
 		<div class="sessions_wrapper" v-else>
+			<input  type="text"
+					placeholder="Filter by department or employee"
+					v-model="filter" />
 			<table class="sessions_list striped">
 				<thead class="sessions_list_head">
 					<tr>
@@ -91,8 +94,9 @@ export default {
 	name: 'UpcomingSessions',
 	title: 'Training Sessions',
 	data() {
+		filter: ''
 		return {
-			sessions: null
+			sessions: null,
 		};
 	},
 	components: {
@@ -147,6 +151,9 @@ export default {
                 this.toastError('Error removing session');
             }
         },
+	},
+	computed: {
+
 	}
 };
 </script>
