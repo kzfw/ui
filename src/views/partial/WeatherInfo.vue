@@ -55,10 +55,10 @@ export default {
 
             }, 
             departing: {
-              N: '36R/35L',
-              S: '17R/18L',
-              SMid: '17R/18L',
-              NMid: '35L/36R',
+              N: '36R/35C',
+              S: '17C/18L',
+              SMid: '17C/18L',
+              NMid: '35C/36R',
             }
           },
           getLanding: function() {
