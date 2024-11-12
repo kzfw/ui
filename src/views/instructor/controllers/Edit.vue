@@ -53,8 +53,8 @@
 									@click="toggleCert">DFW_GND</span>
 								<span id="dfwtwr" :class="{active: form.certs.dfwtwr}" class="cert cert_major"
 									@click="toggleCert">DFW_TWR</span>
-								<span id="regapp" :class="{active: form.certs.regapp}" class="cert cert_major"
-									@click="toggleCert">REG_APP</span>
+								<span id="D10" :class="{active: form.certs.D10}" class="cert cert_major"
+									@click="toggleCert">D10</span>
 								<span id="zfw" :class="{active: form.certs.zfw}" class="cert cert_center"
 									@click="toggleCert">FTW_CTR</span>
 							</div>
@@ -75,8 +75,8 @@
 									@click="toggleCert">DFW_GND</span>
 								<span id="dfwtwrs" :class="{active: form.certs.dfwtwrs}" class="cert cert_solom"
 									@click="toggleCert">DFW_TWR</span>
-								<span id="regapps" :class="{active: form.certs.regapps}" class="cert cert_solom"
-									@click="toggleCert">REG_APP</span>
+								<span id="D10s" :class="{active: form.certs.D10s}" class="cert cert_solom"
+									@click="toggleCert">D10</span>
 								<span id="zfws" :class="{active: form.certs.zfws}" class="cert cert_solom"
 									@click="toggleCert">FTW_CTR</span>
 							</div>
@@ -125,7 +125,7 @@ export default {
 				vis: false,
 				certs: {
 					zfw: false,
-					regapp: false,
+					D10: false,
 					dfwtwr: false,
 					dfwgnd: false,
 					dfwdel: false,
@@ -134,7 +134,7 @@ export default {
 					gnd: false,
 					del: false,
 					zfws: false,
-					regapps: false,
+					D10s: false,
 					dfwtwrs: false,
 					dfwgnds: false,
 					dfwdels: false,

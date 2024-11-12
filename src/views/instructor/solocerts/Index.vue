@@ -58,7 +58,7 @@ export default {
    title: 'Solo Certifications',
    data() {
         return {
-            positions: ['DFW', 'REG', 'FTW', 'MLU', 'DAL','LAW', 'ACT', 'OKC'],
+            positions: ['DFW', 'D10', 'FTW', 'MLU', 'DAL','LAW', 'ACT', 'OKC'],
             certs: [],
             controllers: null,
             loading: true

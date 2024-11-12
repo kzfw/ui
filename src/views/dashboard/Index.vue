@@ -83,7 +83,7 @@ export default {
 	title: 'Dashboard',
 	data() {
 		return {
-			approvedAirports: ["FTW", "DFW", "REG", "ACT", "DAL", "OKC", "DTO", "LBB", "ABI", "ADM", "ADS", "AFW", "BAD", "CNW", "CSM", "DTN", "DYS", "FSI", "FWS", "GGG", "GKY", "GPM", "GRK", "GVT", "GYI", "HLR", "HQZ", "HOB", "LAW", "LTS", "MAF", "MLU", "NFW", "OUN", "PWA", "RBD", "SHV", "SJT", "SPS", "TIK", "TKI", "TXK", "TYR"],
+			approvedAirports: ["FTW", "DFW", "D10", "ACT", "DAL", "OKC", "DTO", "LBB", "ABI", "ADM", "ADS", "AFW", "BAD", "CNW", "CSM", "DTN", "DYS", "FSI", "FWS", "GGG", "GKY", "GPM", "GRK", "GVT", "GYI", "HLR", "HQZ", "HOB", "LAW", "LTS", "MAF", "MLU", "NFW", "OUN", "PWA", "RBD", "SHV", "SJT", "SPS", "TIK", "TKI", "TXK", "TYR"],
 			token: '',
 			discordConnected: false,
 			controllingSessions: null,
