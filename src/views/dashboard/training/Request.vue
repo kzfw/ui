@@ -136,7 +136,7 @@ export default {
 			const rating = this.user.data.rating;
 			if(this.milestones) {
 				const minorPrerequisites = ["obs", "gnd", "twr", "app"];
-				const majorPrerequisites = ["obs", "gnd", "dfwgnd", "dfwtwr", "regapp"];
+				const majorPrerequisites = ["obs", "gnd", "dfwgnd", "dfwtwr", "D10"];
 				let milestonesShowed = this.milestones.filter((milestone) => {
 					if(this.user.data.vis) return (milestone.certCode.substring(0, 3) === "vis" && milestone.rating <= rating) || milestone.code === "GT1";
 					else {
@@ -146,7 +146,7 @@ export default {
 								milestone.code === "GT1" ||
 								(milestone.certCode.substring(0, 3) === "dfw" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
 								(milestone.certCode.substring(0, 3) !== "dfw" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zfw") ||
-								(milestone.certCode === "zfw" && certs.includes("regapp"))
+								(milestone.certCode === "zfw" && certs.includes("D10"))
 							) && 
 							milestone.certCode.substring(0, 3) !== "vis"
 						);
